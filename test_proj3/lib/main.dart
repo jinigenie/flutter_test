@@ -7,10 +7,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Appbar',
-      theme: ThemeData(primarySwatch: Colors.red),
-      home: const MyPage(),
+      home: MyPage(),
     );
   }
 }
@@ -22,9 +22,35 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Appbar icon menu'),
+        title: const Text('Appbar icon menu',
+            style: TextStyle(
+              color: Colors.white,
+            )),
         centerTitle: true,
         elevation: 0.0,
+        backgroundColor: Colors.red,
+        leading: IconButton(
+          // leading은 아이콘 버튼이나 간단 위젯을 왼쪽에 배치
+          icon: const Icon(Icons.menu),
+          onPressed: () {
+            print('menu button is clicked');
+          },
+        ),
+        actions: [
+          // actions는 복수의 아이콘 버튼 등을 오른쪽에 배치
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              print('Shopping button is clicked');
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              print('search button is clicked');
+            },
+          ),
+        ],
       ),
     );
   }
